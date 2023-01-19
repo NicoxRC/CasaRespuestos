@@ -8,23 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./app"));
-const database_1 = require("./database/database");
-function main() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield database_1.sequelize.sync({ force: true });
-            app_1.default.listen(3001, () => {
-                console.log('listening on', 3001);
-            });
-        }
-        catch (error) {
-            console.log(error);
-        }
-    });
-}
-main();
+exports.getProducts = void 0;
+const Product_1 = require("../models/Product");
+const getProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const products = yield Product_1.Product.findAll();
+        res.status(200).json(products);
+    }
+    catch (error) {
+        res.status(404).json({ error: error.message });
+    }
+});
+exports.getProducts = getProducts;
