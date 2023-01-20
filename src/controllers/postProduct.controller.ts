@@ -22,7 +22,9 @@ export const postProduct = async (req: Request, res: Response) => {
       precio,
       referencia,
       cantidad,
+      unidad: "unidad"
     });
+    
     res.status(201).json(productComplete);
   } catch (error) {
     res.status(400).json(error);

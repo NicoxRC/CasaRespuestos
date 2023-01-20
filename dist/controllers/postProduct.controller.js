@@ -28,6 +28,7 @@ const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             precio,
             referencia,
             cantidad,
+            unidad: "unidad"
         });
         res.status(201).json(productComplete);
     }
