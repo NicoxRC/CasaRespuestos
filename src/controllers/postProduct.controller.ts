@@ -3,11 +3,19 @@ import { Product } from '../models/Product';
 
 export const postProduct = async (req: Request, res: Response) => {
   try {
-    const { linea, categoria, descripcion, precio, referencia, cantidad } =
-      req.body;
+    const {
+      linea,
+      categoria,
+      marca,
+      descripcion,
+      precio,
+      referencia,
+      cantidad,
+    } = req.body;
     if (
       !linea ||
       !categoria ||
+      !marca ||
       !descripcion ||
       !precio ||
       !referencia ||
@@ -18,13 +26,14 @@ export const postProduct = async (req: Request, res: Response) => {
     const productComplete = await Product.create({
       linea,
       categoria,
+      marca,
       descripcion,
       precio,
       referencia,
       cantidad,
-      unidad: "unidad"
+      unidad: 'unidad',
     });
-    
+
     res.status(201).json(productComplete);
   } catch (error) {
     res.status(400).json(error);

@@ -18,6 +18,10 @@ exports.Product = database_1.sequelize.define('products', {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
+    marca: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+    },
     unidad: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,

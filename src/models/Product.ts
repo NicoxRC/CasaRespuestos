@@ -18,6 +18,10 @@ export const Product = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    marca: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     unidad: {
       type: DataTypes.STRING,
       allowNull: false,

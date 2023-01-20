@@ -13,9 +13,10 @@ exports.postProduct = void 0;
 const Product_1 = require("../models/Product");
 const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { linea, categoria, descripcion, precio, referencia, cantidad } = req.body;
+        const { linea, categoria, marca, descripcion, precio, referencia, cantidad, } = req.body;
         if (!linea ||
             !categoria ||
+            !marca ||
             !descripcion ||
             !precio ||
             !referencia ||
@@ -24,11 +25,12 @@ const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const productComplete = yield Product_1.Product.create({
             linea,
             categoria,
+            marca,
             descripcion,
             precio,
             referencia,
             cantidad,
-            unidad: "unidad"
+            unidad: 'unidad',
         });
         res.status(201).json(productComplete);
     }
