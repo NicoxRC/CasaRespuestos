@@ -1,5 +1,5 @@
 import { sequelize } from '../database/database';
-import { DataTypes, UUIDV4 } from 'sequelize';
+import { DataTypes } from 'sequelize';
 
 export const Product = sequelize.define(
   'products',

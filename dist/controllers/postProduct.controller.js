@@ -32,7 +32,7 @@ const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         res.status(201).json(productComplete);
     }
     catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(400).json(error);
     }
 });
 exports.postProduct = postProduct;

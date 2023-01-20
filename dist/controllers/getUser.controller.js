@@ -9,15 +9,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getProducts = void 0;
-const Product_1 = require("../models/Product");
-const getProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getUser = void 0;
+const User_1 = require("../models/User");
+const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const products = yield Product_1.Product.findAll();
-        res.status(200).json(products);
+        const { user, password } = req.query;
+        const users = yield User_1.User.findAll();
+        if (users[0].user !== user || users[0].password !== password) {
+            throw new Error('Not Found.');
+        }
+        res.status(200).json(users);
     }
     catch (error) {
         res.status(404).json(error);
     }
 });
-exports.getProducts = getProducts;
+exports.getUser = getUser;

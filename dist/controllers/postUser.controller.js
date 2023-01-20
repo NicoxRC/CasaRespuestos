@@ -9,15 +9,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getProducts = void 0;
-const Product_1 = require("../models/Product");
-const getProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.postUser = void 0;
+const User_1 = require("../models/User");
+const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const products = yield Product_1.Product.findAll();
-        res.status(200).json(products);
+        const { user, password } = req.body;
+        if (!user || !password)
+            throw new Error('Bad Request.');
+        const newUser = yield User_1.User.create({ user, password });
+        res.status(202).json(newUser);
     }
     catch (error) {
-        res.status(404).json(error);
+        res.status(400).json(error);
     }
 });
-exports.getProducts = getProducts;
+exports.postUser = postUser;

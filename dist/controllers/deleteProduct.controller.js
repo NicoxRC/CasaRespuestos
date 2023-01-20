@@ -21,7 +21,7 @@ const deleteProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         res.status(202).json({ msg: 'accepted.' });
     }
     catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(400).json(error);
     }
 });
 exports.deleteProduct = deleteProduct;
