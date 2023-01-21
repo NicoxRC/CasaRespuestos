@@ -13,32 +13,33 @@ exports.postProduct = void 0;
 const Product_1 = require("../models/Product");
 const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { linea, categoria, marca, descripcion, precio, referencia, cantidad, } = req.body;
-        if (!linea ||
+        const { nombre, linea, categoria, marca, descripcion, precio, referencia } = req.body;
+        if (!nombre ||
+            !linea ||
             !categoria ||
             !marca ||
             !descripcion ||
             !precio ||
             !referencia)
-            throw new Error("Bad Request.");
+            throw new Error('Bad Request.');
         const products = yield Product_1.Product.findAll();
         if (products.length > 0) {
             products.map((el) => {
                 if (el.referencia === referencia) {
-                    throw new Error("La referencia ya existe");
+                    throw new Error('La referencia ya existe');
                 }
             });
         }
         const productComplete = yield Product_1.Product.create({
+            nombre,
             linea,
             categoria,
-            marca,
+            marca: marca.value,
             descripcion,
             precio,
             referencia,
-            unidad: "unidad",
+            unidad: 'unidad',
         });
-        console.log("asdf");
         res.status(201).json(productComplete);
     }
     catch (error) {

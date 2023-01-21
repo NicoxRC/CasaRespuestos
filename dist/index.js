@@ -17,9 +17,9 @@ const database_1 = require("./database/database");
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield database_1.sequelize.sync({ force: false });
+            yield database_1.sequelize.sync({ force: true });
             app_1.default.listen(process.env.PORT, () => {
-                console.log("listening on", process.env.PORT);
+                console.log('listening on', process.env.PORT);
             });
         }
         catch (error) {

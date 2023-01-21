@@ -1,13 +1,17 @@
-import { sequelize } from "../database/database";
-import { DataTypes } from "sequelize";
+import { sequelize } from '../database/database';
+import { DataTypes } from 'sequelize';
 
 export const Product = sequelize.define(
-  "products",
+  'products',
   {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+    },
+    nombre: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     linea: {

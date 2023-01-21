@@ -3,11 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Product = void 0;
 const database_1 = require("../database/database");
 const sequelize_1 = require("sequelize");
-exports.Product = database_1.sequelize.define("products", {
+exports.Product = database_1.sequelize.define('products', {
     id: {
         type: sequelize_1.DataTypes.UUID,
         primaryKey: true,
         defaultValue: sequelize_1.DataTypes.UUIDV4,
+        allowNull: false,
+    },
+    nombre: {
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
     linea: {
