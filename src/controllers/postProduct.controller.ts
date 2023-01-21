@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
-import { Product } from '../models/Product';
+import { Request, Response } from "express";
+import { Product } from "../models/Product";
 
 export const postProduct = async (req: Request, res: Response) => {
   try {
@@ -12,16 +12,26 @@ export const postProduct = async (req: Request, res: Response) => {
       referencia,
       cantidad,
     } = req.body;
+
     if (
       !linea ||
       !categoria ||
       !marca ||
       !descripcion ||
       !precio ||
-      !referencia ||
-      !cantidad
+      !referencia
     )
-      throw new Error('Bad Request.');
+      throw new Error("Bad Request.");
+
+    const products = await Product.findAll();
+
+    if (products.length > 0) {
+      products.map((el: any) => {
+        if (el.referencia === referencia) {
+          throw new Error("La referencia ya existe");
+        }
+      });
+    }
 
     const productComplete = await Product.create({
       linea,
@@ -30,12 +40,13 @@ export const postProduct = async (req: Request, res: Response) => {
       descripcion,
       precio,
       referencia,
-      cantidad,
-      unidad: 'unidad',
+      unidad: "unidad",
     });
 
+    console.log("asdf");
+
     res.status(201).json(productComplete);
-  } catch (error) {
-    res.status(400).json(error);
+  } catch (error: any) {
+    res.status(400).json({ error: error.message });
   }
 };

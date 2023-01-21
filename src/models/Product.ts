@@ -1,8 +1,8 @@
-import { sequelize } from '../database/database';
-import { DataTypes } from 'sequelize';
+import { sequelize } from "../database/database";
+import { DataTypes } from "sequelize";
 
 export const Product = sequelize.define(
-  'products',
+  "products",
   {
     id: {
       type: DataTypes.UUID,
@@ -40,7 +40,6 @@ export const Product = sequelize.define(
     },
     cantidad: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
   },
   {

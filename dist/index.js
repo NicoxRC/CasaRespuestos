@@ -19,7 +19,7 @@ function main() {
         try {
             yield database_1.sequelize.sync({ force: false });
             app_1.default.listen(process.env.PORT, () => {
-                console.log('listening on', process.env.PORT);
+                console.log("listening on", process.env.PORT);
             });
         }
         catch (error) {

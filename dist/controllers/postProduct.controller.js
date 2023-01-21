@@ -19,9 +19,16 @@ const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             !marca ||
             !descripcion ||
             !precio ||
-            !referencia ||
-            !cantidad)
-            throw new Error('Bad Request.');
+            !referencia)
+            throw new Error("Bad Request.");
+        const products = yield Product_1.Product.findAll();
+        if (products.length > 0) {
+            products.map((el) => {
+                if (el.referencia === referencia) {
+                    throw new Error("La referencia ya existe");
+                }
+            });
+        }
         const productComplete = yield Product_1.Product.create({
             linea,
             categoria,
@@ -29,13 +36,13 @@ const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             descripcion,
             precio,
             referencia,
-            cantidad,
-            unidad: 'unidad',
+            unidad: "unidad",
         });
+        console.log("asdf");
         res.status(201).json(productComplete);
     }
     catch (error) {
-        res.status(400).json(error);
+        res.status(400).json({ error: error.message });
     }
 });
 exports.postProduct = postProduct;
