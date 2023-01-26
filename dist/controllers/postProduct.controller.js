@@ -13,14 +13,15 @@ exports.postProduct = void 0;
 const Product_1 = require("../models/Product");
 const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { nombre, linea, categoria, marca, descripcion, precio, referencia } = req.body;
+        const { nombre, linea, categoria, marca, descripcion, precio, referencia, cantidad, } = req.body;
         if (!nombre ||
             !linea ||
             !categoria ||
             !marca ||
             !descripcion ||
             !precio ||
-            !referencia)
+            !referencia ||
+            !cantidad)
             throw new Error('Bad Request.');
         const products = yield Product_1.Product.findAll();
         if (products.length > 0) {
@@ -38,6 +39,7 @@ const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             descripcion,
             precio,
             referencia,
+            cantidad,
             unidad: 'unidad',
         });
         res.status(201).json(productComplete);

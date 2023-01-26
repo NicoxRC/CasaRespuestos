@@ -3,8 +3,16 @@ import { Product } from '../models/Product';
 
 export const postProduct = async (req: Request, res: Response) => {
   try {
-    const { nombre, linea, categoria, marca, descripcion, precio, referencia } =
-      req.body;
+    const {
+      nombre,
+      linea,
+      categoria,
+      marca,
+      descripcion,
+      precio,
+      referencia,
+      cantidad,
+    } = req.body;
 
     if (
       !nombre ||
@@ -13,7 +21,8 @@ export const postProduct = async (req: Request, res: Response) => {
       !marca ||
       !descripcion ||
       !precio ||
-      !referencia
+      !referencia ||
+      !cantidad
     )
       throw new Error('Bad Request.');
 
@@ -35,6 +44,7 @@ export const postProduct = async (req: Request, res: Response) => {
       descripcion,
       precio,
       referencia,
+      cantidad,
       unidad: 'unidad',
     });
 
