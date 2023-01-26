@@ -20,8 +20,7 @@ const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             !marca ||
             !descripcion ||
             !precio ||
-            !referencia ||
-            !cantidad)
+            !referencia)
             throw new Error('Bad Request.');
         const products = yield Product_1.Product.findAll();
         if (products.length > 0) {

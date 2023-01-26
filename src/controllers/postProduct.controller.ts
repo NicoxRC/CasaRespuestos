@@ -21,8 +21,7 @@ export const postProduct = async (req: Request, res: Response) => {
       !marca ||
       !descripcion ||
       !precio ||
-      !referencia ||
-      !cantidad
+      !referencia
     )
       throw new Error('Bad Request.');
 
