@@ -14,7 +14,7 @@ const Product_1 = require("./../models/Product");
 const patchProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
-        const { descripcion, precio, referencia, cantidad } = req.body;
+        const { nombre, linea, categoria, marca, descripcion, precio, referencia, cantidad, } = req.body;
         const findProduct = yield Product_1.Product.findByPk(id);
         if (!findProduct)
             return res.status(404).json({ msg: 'Form not found' });
@@ -27,6 +27,14 @@ const patchProducts = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             });
         }
         const fields = {};
+        if (nombre)
+            fields.nombre = nombre;
+        if (linea)
+            fields.linea = linea;
+        if (categoria)
+            fields.categoria = categoria;
+        if (marca)
+            fields.marca = marca.value;
         if (descripcion)
             fields.descripcion = descripcion;
         if (precio)

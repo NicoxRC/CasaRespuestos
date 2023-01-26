@@ -4,7 +4,17 @@ import { Request, Response } from 'express';
 export const patchProducts = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { descripcion, precio, referencia, cantidad } = req.body;
+    const {
+      nombre,
+      linea,
+      categoria,
+      marca,
+      descripcion,
+      precio,
+      referencia,
+      cantidad,
+    } = req.body;
+
     const findProduct = await Product.findByPk(id);
     if (!findProduct) return res.status(404).json({ msg: 'Form not found' });
 
@@ -19,6 +29,10 @@ export const patchProducts = async (req: Request, res: Response) => {
     }
 
     const fields: any = {};
+    if (nombre) fields.nombre = nombre;
+    if (linea) fields.linea = linea;
+    if (categoria) fields.categoria = categoria;
+    if (marca) fields.marca = marca.value;
     if (descripcion) fields.descripcion = descripcion;
     if (precio) fields.precio = precio;
     if (referencia) fields.referencia = referencia;
