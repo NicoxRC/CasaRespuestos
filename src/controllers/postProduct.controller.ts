@@ -43,7 +43,7 @@ export const postProduct = async (req: Request, res: Response) => {
       descripcion,
       precio,
       referencia,
-      cantidad,
+      cantidad: cantidad ? cantidad : 0,
       unidad: 'unidad',
     });
 
