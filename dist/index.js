@@ -18,8 +18,8 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             yield database_1.sequelize.sync({ force: false });
-            app_1.default.listen(process.env.PORT, () => {
-                console.log('listening on', process.env.PORT);
+            app_1.default.listen(process.env.DB_PORT, () => {
+                console.log('listening on', process.env.DB_PORT);
             });
         }
         catch (error) {

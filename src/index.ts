@@ -4,8 +4,8 @@ import { sequelize } from './database/database';
 async function main() {
   try {
     await sequelize.sync({ force: false });
-    app.listen(process.env.PORT, () => {
-      console.log('listening on', process.env.PORT);
+    app.listen(process.env.DB_PORT, () => {
+      console.log('listening on', process.env.DB_PORT);
     });
   } catch (error) {
     console.log(error);
