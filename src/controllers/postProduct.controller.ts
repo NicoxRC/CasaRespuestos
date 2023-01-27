@@ -35,6 +35,8 @@ export const postProduct = async (req: Request, res: Response) => {
       });
     }
 
+    //creating a product
+
     const productComplete = await Product.create({
       nombre,
       linea,

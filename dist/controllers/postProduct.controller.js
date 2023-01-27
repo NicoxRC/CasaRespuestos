@@ -30,6 +30,7 @@ const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
                 }
             });
         }
+        //creating a product
         const productComplete = yield Product_1.Product.create({
             nombre,
             linea,
