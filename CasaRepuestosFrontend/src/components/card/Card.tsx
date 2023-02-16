@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { deleteProduct } from '../../services/deleteProduct';
 import Swal from 'sweetalert2';
 
+//deploy
+
 export default function Card(props: any) {
   const {
     id,
