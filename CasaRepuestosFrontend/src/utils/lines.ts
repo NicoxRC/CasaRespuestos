@@ -1,0 +1,15 @@
+export const lines: string[] = [
+  'chevrolet',
+  'toyota',
+  'suzuki',
+  'mazda',
+  'daihatsu',
+  'nissan',
+  'land rover',
+  'mitsubishi',
+  'hyundai-kia',
+  'renault',
+  'chinos',
+  'daewoo',
+  'varios',
+];

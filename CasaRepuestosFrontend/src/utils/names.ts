@@ -1,0 +1,15 @@
+export const names: string[] = [
+  'Nicolas',
+  'Carlos',
+  'Jose',
+  'Victor',
+  'Christian',
+  'Cami',
+  'Wilmer',
+  'Andres',
+  'Sebastian',
+  'David',
+  'Chucho',
+  'Jhon',
+  'Santiago',
+];

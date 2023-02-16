@@ -1,0 +1,23 @@
+.container_form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+.container_form label {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.button_back {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+}

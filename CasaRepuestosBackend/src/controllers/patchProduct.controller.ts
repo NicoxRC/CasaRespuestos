@@ -1,4 +1,4 @@
-import { Product } from './../models/Product';
+import { Product } from '../models/Product';
 import { Request, Response } from 'express';
 
 export const patchProducts = async (req: Request, res: Response) => {
