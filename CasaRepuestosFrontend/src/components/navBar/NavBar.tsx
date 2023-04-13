@@ -58,14 +58,32 @@ export default function NavBar(props: any) {
             filename="Inventario Casa de los Repuestos"
           >
             <ExcelSheet data={products} name="Inventario">
-              <ExcelColumn label="Categoria" value="categoria" />
-              <ExcelColumn label="SubCategoria" value="linea" />
-              <ExcelColumn label="Marca" value="marca" />
+              <ExcelColumn label="COSTO" value="precio" />
+              <ExcelColumn label="PRECIO" value="precio" />
+              <ExcelColumn label="DEPTO" value="" />
+              <ExcelColumn label="NOMBRE_DEPTO" value="linea" />
+              <ExcelColumn label="GRUPO" value="" />
+              <ExcelColumn label="NOMBRE_GRUPO" value="categoria" />
+              <ExcelColumn label="LINEA" value="" />
+              <ExcelColumn label="NOMBRE_LINEA" value="categoria" />
+              <ExcelColumn label="MARCA" value="" />
+              <ExcelColumn label="NOM_MARCA" value="marca" />
+              <ExcelColumn label="TALLA" value="" />
+              <ExcelColumn label="IVA" value="" />
               <ExcelColumn label="Unidad" value="unidad" />
+              <ExcelColumn label="DCTOMAX" value="" />
+              <ExcelColumn label="STOCKMIN" value="" />
+              <ExcelColumn label="STOCKMAX" value="" />
+              <ExcelColumn label="COLOR" value="" />
+              <ExcelColumn label="PROVEEDOR" value="" />
+              <ExcelColumn label="CONTEO" value="cantidad" />
+              <ExcelColumn label="UBICACION" value="" />
+              <ExcelColumn label="CUM" value="" />
+              <ExcelColumn label="REGISTRO" value="" />
+              <ExcelColumn label="LOTE" value="" />
+              <ExcelColumn label="VENCIMIENTO" value="" />
               <ExcelColumn label="Descripcion" value="descripcion" />
-              <ExcelColumn label="Costo" value="precio" />
               <ExcelColumn label="Codigo de Barras" value="referencia" />
-              <ExcelColumn label="Cantidad" value="cantidad" />
             </ExcelSheet>
           </ExcelFile>
           <button
