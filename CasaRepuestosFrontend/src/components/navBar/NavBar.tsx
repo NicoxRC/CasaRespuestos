@@ -58,6 +58,11 @@ export default function NavBar(props: any) {
             filename="Inventario Casa de los Repuestos"
           >
             <ExcelSheet data={products} name="Inventario">
+              <ExcelColumn label="CODIGO_SICAF" value="" />
+              <ExcelColumn label="REFERENCIA" value="referencia" />
+              <ExcelColumn label="CLASE" value="" />
+              <ExcelColumn label="BARRAS" value="" />
+              <ExcelColumn label="DESCRIPCION" value="" />
               <ExcelColumn label="COSTO" value="precio" />
               <ExcelColumn label="PRECIO" value="precio" />
               <ExcelColumn label="DEPTO" value="" />
@@ -82,8 +87,6 @@ export default function NavBar(props: any) {
               <ExcelColumn label="REGISTRO" value="" />
               <ExcelColumn label="LOTE" value="" />
               <ExcelColumn label="VENCIMIENTO" value="" />
-              <ExcelColumn label="Descripcion" value="descripcion" />
-              <ExcelColumn label="Codigo de Barras" value="referencia" />
             </ExcelSheet>
           </ExcelFile>
           <button
