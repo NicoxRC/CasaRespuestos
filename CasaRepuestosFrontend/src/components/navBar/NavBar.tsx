@@ -62,7 +62,7 @@ export default function NavBar(props: any) {
               <ExcelColumn label="REFERENCIA" value="referencia" />
               <ExcelColumn label="CLASE" value="" />
               <ExcelColumn label="BARRAS" value="" />
-              <ExcelColumn label="DESCRIPCION" value="" />
+              <ExcelColumn label="DESCRIPCION" value="descripcion" />
               <ExcelColumn label="COSTO" value="precio" />
               <ExcelColumn label="PRECIO" value="precio" />
               <ExcelColumn label="DEPTO" value="" />
