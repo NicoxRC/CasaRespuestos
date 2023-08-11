@@ -1,8 +1,9 @@
-import { useNavigate } from 'react-router-dom';
-import { deleteProduct } from '../../services/deleteProduct';
 import Swal from 'sweetalert2';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { deleteProduct } from '../../services/deleteProduct';
+import type { ProductInterface } from '../../types/productInterface';
 
-export default function Card(props: any): JSX.Element {
+export default function Card(props: ProductInterface): JSX.Element {
   const {
     id,
     nombre,
@@ -15,9 +16,9 @@ export default function Card(props: any): JSX.Element {
     cantidad,
   } = props;
 
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
 
-  const handleEliminate = async () => {
+  const handleEliminate = async (): Promise<void> => {
     Swal.fire({
       title: 'Estas seguro?',
       text: 'No se puede revertir.',
@@ -42,7 +43,7 @@ export default function Card(props: any): JSX.Element {
     });
   };
 
-  const handleClickEdit = async () => {
+  const handleClickEdit = async (): Promise<void> => {
     navigate('/editProduct', {
       state: {
         id,

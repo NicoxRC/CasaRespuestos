@@ -1,6 +1,6 @@
 import { Product } from '../models/Product';
 import { Request, Response } from 'express';
-import { ProductInterface } from '../types/productInterface';
+import type { ProductInterface } from '../types/productInterface';
 
 export = async (req: Request, res: Response): Promise<void> => {
   try {

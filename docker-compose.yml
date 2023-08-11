@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=rojaslopez19
+      - POSTGRES_DB=product
+    ports:
+      - '5432:5432'
+
+  cfrontend:
+    container_name: cfrontend
+    restart: always
+    build: ./CasaRepuestosFrontend
+    ports:
+      - '3000:3000'
+
+  cbackend:
+    container_name: cbackend
+    restart: always
+    build: ./CasaRepuestosBackend
+    ports:
+      - '3001:3001'

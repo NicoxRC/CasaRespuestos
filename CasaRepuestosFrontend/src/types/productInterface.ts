@@ -4,7 +4,6 @@ export interface ProductInterface {
   linea: string;
   categoria: string;
   marca: string;
-  unidad: string;
   descripcion: string;
   precio: number;
   referencia: string;

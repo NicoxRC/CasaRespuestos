@@ -1,12 +1,14 @@
 import Card from '../card/Card';
+import type { ProductInterface } from '../../types/productInterface';
+import type { CardsProps } from '../../types/cardsProps';
 import './Cards.css';
 
-export default function Cards(props: any) {
+export default function Cards(props: CardsProps): JSX.Element {
   const { productsShow } = props;
 
   return (
     <div className="container">
-      {productsShow?.map((el: any) => (
+      {productsShow?.map((el: ProductInterface) => (
         <Card
           key={el.id}
           id={el.id}
