@@ -1,7 +1,10 @@
 import { lines } from '../../utils/lines';
 import { names } from '../../utils/names';
+import type { DefaultValuesFormInterface } from '../../types/defaultValuesFormInterface';
 
-export default function DefaultValuesForm(props: any) {
+export default function DefaultValuesForm(
+  props: DefaultValuesFormInterface
+): JSX.Element {
   const { name, line, handleSelectName, handleSelectLine } = props;
 
   return (

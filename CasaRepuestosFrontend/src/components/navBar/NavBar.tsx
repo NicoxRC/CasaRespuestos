@@ -1,22 +1,24 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getProducts } from '../../services/getProducts';
 import Cookies from 'universal-cookie';
 import ExportExcel from 'react-export-excel';
 import Swal from 'sweetalert2';
+import { useEffect, useState } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { getProducts } from '../../services/getProducts';
+import type { navBarProps } from '../../types/navBarProps';
+import type { ProductInterface } from '../../types/productInterface';
 
-export default function NavBar(props: any) {
+export default function NavBar(props: navBarProps): JSX.Element {
   const { name, line } = props;
 
-  const [products, setProducts] = useState([]);
-  const cookies = new Cookies();
-  const navigate = useNavigate();
+  const [products, setProducts] = useState<ProductInterface[]>([]);
+  const cookies: Cookies = new Cookies();
+  const navigate: NavigateFunction = useNavigate();
 
-  const ExcelFile = ExportExcel.ExcelFile;
-  const ExcelSheet = ExportExcel.ExcelSheet;
-  const ExcelColumn = ExportExcel.ExcelColumn;
+  const ExcelFile: any = ExportExcel.ExcelFile;
+  const ExcelSheet: any = ExportExcel.ExcelSheet;
+  const ExcelColumn: any = ExportExcel.ExcelColumn;
 
-  const handleClickCreate = () => {
+  const handleClickCreate = (): void => {
     if (name && line) {
       navigate('/newProduct', { state: { name, line } });
     } else {
@@ -28,7 +30,7 @@ export default function NavBar(props: any) {
     }
   };
 
-  const handleClickSession = () => {
+  const handleClickSession = (): void => {
     cookies.remove('id', { path: '/' });
     cookies.remove('user', { path: '/' });
     navigate('/');
@@ -36,7 +38,7 @@ export default function NavBar(props: any) {
 
   useEffect(() => {
     (async () => {
-      const response = await getProducts();
+      const response: ProductInterface[] = await getProducts();
       setProducts(response);
     })();
   }, []);

@@ -15,8 +15,8 @@ export default function Home() {
   const [productsShow, setProductsShow] = useState([]);
   const [valueProduct, setValueProduct] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [name, setName] = useLocalStorage('name');
-  const [line, setLine] = useLocalStorage('line');
+  const [name, setName] = useLocalStorage<string>('name');
+  const [line, setLine] = useLocalStorage<string>('line');
   const navigate = useNavigate();
   const cookies = new Cookies();
   const pageSize = 10;
@@ -75,7 +75,7 @@ export default function Home() {
     setLine(e.target.value);
   };
 
-  const handlePageChange = (page: any): any => {
+  const handlePageChange = (page: number): void => {
     setCurrentPage(page);
   };
 

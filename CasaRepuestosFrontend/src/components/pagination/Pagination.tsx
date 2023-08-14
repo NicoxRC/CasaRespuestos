@@ -1,14 +1,16 @@
-export default function Pagination(props: any) {
+import { PaginationInterface } from '../../types/paginationInterface';
+
+export default function Pagination(props: PaginationInterface): JSX.Element {
   const { products, pageSize, currentPage, onPageChange } = props;
   let index: number[] = [];
-  let showPages: any[] = [];
+  let showPages: number[] = [];
 
   for (let i = 1; i <= Math.ceil(products?.length / pageSize); i++) {
     index.push(i);
   }
 
   if (index.length <= 1) {
-    return null;
+    return <></>;
   } else if (index.length == 2) {
     currentPage == 1
       ? (showPages = [currentPage, currentPage + 1])
