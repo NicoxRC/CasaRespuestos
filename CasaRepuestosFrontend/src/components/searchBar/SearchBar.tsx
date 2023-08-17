@@ -1,7 +1,8 @@
-import { Dropdown } from 'react-bootstrap';
 import MySelect from '../select/MySelect';
+import { Dropdown } from 'react-bootstrap';
+import type { SearchBarInterface } from '../../types/Interfaces';
 
-export default function SearchBar(props: any) {
+export default function SearchBar(props: SearchBarInterface): JSX.Element {
   const {
     valueProduct,
     handleFilterByMarca,

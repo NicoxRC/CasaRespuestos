@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { deleteProduct } from '../../services/deleteProduct';
-import type { ProductInterface } from '../../types/productInterface';
+import type { ProductInterface } from '../../types/Interfaces';
 
 export default function Card(props: ProductInterface): JSX.Element {
   const {

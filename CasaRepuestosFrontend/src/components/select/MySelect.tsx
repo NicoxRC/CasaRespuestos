@@ -1,8 +1,11 @@
 import Select from 'react-select';
 import { marca } from '../../utils/marca';
-export default function MySelect(props: any) {
-  const handleChange = (value: string) => {
-    props.onChange('marca', value);
+
+export default function MySelect(props: any): JSX.Element {
+  const { onChange, value } = props;
+
+  const handleChange = (value: string): void => {
+    onChange('marca', value);
   };
 
   return (
@@ -11,7 +14,7 @@ export default function MySelect(props: any) {
         id="marca"
         options={marca}
         onChange={handleChange}
-        value={props.value}
+        value={value}
         placeholder="Marca"
       />
     </div>

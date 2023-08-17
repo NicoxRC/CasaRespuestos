@@ -1,6 +1,6 @@
 import { lines } from '../../utils/lines';
 import { names } from '../../utils/names';
-import type { DefaultValuesFormInterface } from '../../types/defaultValuesFormInterface';
+import type { DefaultValuesFormInterface } from '../../types/Interfaces';
 
 export default function DefaultValuesForm(
   props: DefaultValuesFormInterface

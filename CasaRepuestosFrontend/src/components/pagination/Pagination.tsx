@@ -1,4 +1,4 @@
-import { PaginationInterface } from '../../types/paginationInterface';
+import type { PaginationInterface } from '../../types/Interfaces';
 
 export default function Pagination(props: PaginationInterface): JSX.Element {
   const { products, pageSize, currentPage, onPageChange } = props;
@@ -11,8 +11,8 @@ export default function Pagination(props: PaginationInterface): JSX.Element {
 
   if (index.length <= 1) {
     return <></>;
-  } else if (index.length == 2) {
-    currentPage == 1
+  } else if (index.length === 2) {
+    currentPage === 1
       ? (showPages = [currentPage, currentPage + 1])
       : (showPages = [currentPage - 1, currentPage]);
   } else {

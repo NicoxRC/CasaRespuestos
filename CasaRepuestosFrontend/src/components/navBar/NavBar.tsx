@@ -4,10 +4,10 @@ import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { getProducts } from '../../services/getProducts';
-import type { navBarProps } from '../../types/navBarProps';
-import type { ProductInterface } from '../../types/productInterface';
+import type { NavBarProps } from '../../types/propsTypes';
+import type { ProductInterface } from '../../types/Interfaces';
 
-export default function NavBar(props: navBarProps): JSX.Element {
+export default function NavBar(props: NavBarProps): JSX.Element {
   const { name, line } = props;
 
   const [products, setProducts] = useState<ProductInterface[]>([]);

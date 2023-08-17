@@ -1,19 +1,22 @@
-import { useState, useEffect } from 'react';
-import { getProducts } from '../../services/getProducts';
-import { useNavigate } from 'react-router-dom';
-import { useLocalStorage } from 'react-use-storage';
 import Cards from '../../components/cards/Cards';
 import NavBar from '../../components/navBar/NavBar';
 import SearchBar from '../../components/searchBar/SearchBar';
 import Pagination from '../../components/pagination/Pagination';
 import Cookies from 'universal-cookie';
 import DefaultValuesForm from '../../components/defaultValuesForm/DefaultValuesForm';
+import { useState, useEffect } from 'react';
+import { getProducts } from '../../services/getProducts';
+import { useNavigate } from 'react-router-dom';
+import { useLocalStorage } from 'react-use-storage';
+import type { handleProductChange } from '../../types/functionTypes';
 
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [productsFilter, setProductsFilter] = useState([]);
   const [productsShow, setProductsShow] = useState([]);
-  const [valueProduct, setValueProduct] = useState([]);
+  const [valueProduct, setValueProduct] = useState<handleProductChange>({
+    value: '',
+  });
   const [currentPage, setCurrentPage] = useState(1);
   const [name, setName] = useLocalStorage<string>('name');
   const [line, setLine] = useLocalStorage<string>('line');
@@ -21,7 +24,7 @@ export default function Home() {
   const cookies = new Cookies();
   const pageSize = 10;
 
-  const handleFilterByMarca = (e: any) => {
+  const handleFilterByMarca = (e: React.ChangeEvent<HTMLInputElement>) => {
     const productsFiltered: any = products.filter((el: any) =>
       el.referencia
         .trim()
@@ -37,7 +40,9 @@ export default function Home() {
     }
   };
 
-  const handleFilterByDescripcion = (e: any) => {
+  const handleFilterByDescripcion = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const productsFiltered: any = products.filter((el: any) =>
       el.descripcion
         .trim()
@@ -53,7 +58,7 @@ export default function Home() {
     }
   };
 
-  const handleProductChange = (tipe: any, value: any) => {
+  const handleProductChange = (value: handleProductChange) => {
     setValueProduct(value);
     if (value.value === 'Todos') {
       setProductsFilter(products);
