@@ -1,10 +1,11 @@
 import axios from 'axios';
+import type { ProductInterface } from '../types/Interfaces';
 
-export const deleteProduct = async (id: string) => {
+export const deleteProduct = async (id: string): Promise<ProductInterface> => {
   try {
-    const response = await axios.delete(`/products/${id}`);
-    return response.data;
-  } catch (error) {
-    console.log(error);
+    const { data } = await axios.delete<ProductInterface>(`/products/${id}`);
+    return data;
+  } catch (error: any) {
+    return error;
   }
 };

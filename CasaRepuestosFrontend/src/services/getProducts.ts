@@ -1,10 +1,11 @@
 import axios from 'axios';
+import type { ProductInterface } from '../types/Interfaces';
 
-export const getProducts = async () => {
+export const getProducts = async (): Promise<ProductInterface[]> => {
   try {
-    const response = await axios.get(`/products`);
-    return response.data;
-  } catch (error) {
-    return console.log(error);
+    const { data } = await axios.get<ProductInterface[]>(`/products`);
+    return data;
+  } catch (error: any) {
+    return error;
   }
 };

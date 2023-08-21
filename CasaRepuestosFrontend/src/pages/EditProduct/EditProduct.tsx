@@ -1,38 +1,48 @@
-import { useEffect } from 'react';
-import { Formik, Field } from 'formik';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { patchProduct } from '../../services/patchProduct';
-import { lines } from '../../utils/lines';
-import { categories } from '../../utils/categories';
 import Swal from 'sweetalert2';
 import MySelect from '../../components/select/MySelect';
 import Cookies from 'universal-cookie';
+import { useEffect } from 'react';
+import { Formik, Field } from 'formik';
+import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
+import { patchProduct } from '../../services/patchProduct';
+import { lines } from '../../utils/lines';
+import { categories } from '../../utils/categories';
+import type { ProductInterface } from '../../types/Interfaces';
+import type { ProductEditType } from '../../types/types';
 
-export default function EditProduct() {
-  const cookies = new Cookies();
-  const navigate = useNavigate();
+export default function EditProduct(): JSX.Element {
   const location = useLocation();
+  const cookies: Cookies = new Cookies();
+  const navigate: NavigateFunction = useNavigate();
 
-  const { id, linea, categoria, descripcion, precio, referencia, cantidad } =
-    location.state;
+  const {
+    id,
+    linea,
+    categoria,
+    descripcion,
+    precio,
+    referencia,
+    cantidad,
+  } = location.state;
 
-  const handleClickBack = () => {
+  const initialValues: ProductEditType = {
+    linea: '',
+    categoria: '',
+    marca: '',
+    descripcion: descripcion,
+    precio: 0,
+    referencia: referencia,
+    cantidad: 0,
+  };
+
+  const handleClickBack = (): void => {
     navigate('/');
   };
 
-  const handleSubmit = async (values: any) => {
-    if (values.referencia === referencia) {
-      values.referencia = null;
-    }
+  const handleSubmit = async (values: ProductEditType): Promise<void> => {
+    const res: ProductInterface = await patchProduct(id, values);
 
-    const res = await patchProduct(id, values);
-    if (res.message) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'No se puedo edtiar el producto, revisar referencia',
-      });
-    } else {
+    if (res) {
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -41,6 +51,12 @@ export default function EditProduct() {
         timer: 1500,
       });
       navigate('/home');
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'No se puedo edtiar el producto, revisar referencia',
+      });
     }
   };
 
@@ -57,18 +73,7 @@ export default function EditProduct() {
           Volver
         </button>
       </div>
-      <Formik
-        initialValues={{
-          linea: '',
-          categoria: '',
-          marca: '',
-          descripcion: descripcion,
-          precio: '',
-          referencia: referencia,
-          cantidad: '',
-        }}
-        onSubmit={handleSubmit}
-      >
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ handleSubmit, values, setFieldValue }) => (
           <form
             className="d-flex justify-content-center p-5 vw-100 h-100"

@@ -1,25 +1,41 @@
-import { useEffect } from 'react';
-import { Formik, Field } from 'formik';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { postProduct } from '../../services/postProducts';
-import { categories } from '../../utils/categories';
 import Swal from 'sweetalert2';
 import Cookies from 'universal-cookie';
 import MySelect from '../../components/select/MySelect';
+import { useEffect } from 'react';
+import { Formik, Field } from 'formik';
+import {
+  Location,
+  NavigateFunction,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
+import { postProduct } from '../../services/postProducts';
+import { categories } from '../../utils/categories';
+import type { ProductFormType } from '../../types/types';
 import './NewProduct.css';
 
-export default function NewProduct() {
-  const cookies = new Cookies();
-  const navigate = useNavigate();
-  const location = useLocation();
+export default function NewProduct(): JSX.Element {
+  const cookies: Cookies = new Cookies();
+  const location: Location = useLocation();
+  const navigate: NavigateFunction = useNavigate();
+  const initialValues: ProductFormType = {
+    nombre: '',
+    linea: '',
+    categoria: '',
+    marca: '',
+    descripcion: '',
+    precio: 0,
+    referencia: '',
+    cantidad: 0,
+  };
 
   const { name, line } = location.state;
 
-  const handleClickBack = () => {
+  const handleClickBack = (): void => {
     navigate('/');
   };
 
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (values: ProductFormType): Promise<void> => {
     try {
       values.nombre = name;
       values.linea = line;
@@ -54,17 +70,7 @@ export default function NewProduct() {
           Volver
         </button>
       </div>
-      <Formik
-        initialValues={{
-          categoria: '',
-          marca: '',
-          descripcion: '',
-          precio: '',
-          referencia: '',
-          cantidad: '',
-        }}
-        onSubmit={handleSubmit}
-      >
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ handleSubmit, values, setFieldValue }) => (
           <form
             className="d-flex justify-content-center p-5 vw-100 h-100"

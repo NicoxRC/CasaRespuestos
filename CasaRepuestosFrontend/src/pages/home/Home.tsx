@@ -6,30 +6,35 @@ import Cookies from 'universal-cookie';
 import DefaultValuesForm from '../../components/defaultValuesForm/DefaultValuesForm';
 import { useState, useEffect } from 'react';
 import { getProducts } from '../../services/getProducts';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { useLocalStorage } from 'react-use-storage';
-import type { handleProductChange } from '../../types/functionTypes';
+import type { HandleProductChangeType } from '../../types/types';
+import type { ProductInterface } from '../../types/Interfaces';
 
-export default function Home() {
-  const [products, setProducts] = useState([]);
-  const [productsFilter, setProductsFilter] = useState([]);
-  const [productsShow, setProductsShow] = useState([]);
-  const [valueProduct, setValueProduct] = useState<handleProductChange>({
+export default function Home(): JSX.Element {
+  const cookies: Cookies = new Cookies();
+  const navigate: NavigateFunction = useNavigate();
+  const pageSize: number = 10;
+
+  const [products, setProducts] = useState<ProductInterface[]>([]);
+  const [productsFilter, setProductsFilter] = useState<ProductInterface[]>([]);
+  const [productsShow, setProductsShow] = useState<ProductInterface[]>([]);
+  const [valueProduct, setValueProduct] = useState<HandleProductChangeType>({
     value: '',
   });
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [name, setName] = useLocalStorage<string>('name');
   const [line, setLine] = useLocalStorage<string>('line');
-  const navigate = useNavigate();
-  const cookies = new Cookies();
-  const pageSize = 10;
 
-  const handleFilterByMarca = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const productsFiltered: any = products.filter((el: any) =>
-      el.referencia
-        .trim()
-        .toLowerCase()
-        .includes(e.target.value.trim().toLowerCase())
+  const handleFilterByMarca = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const productsFiltered: ProductInterface[] = products.filter(
+      (el: ProductInterface) =>
+        el.referencia
+          .trim()
+          .toLowerCase()
+          .includes(e.target.value.trim().toLowerCase())
     );
     if (productsFiltered.length) {
       setProductsFilter(productsFiltered);
@@ -42,12 +47,13 @@ export default function Home() {
 
   const handleFilterByDescripcion = (
     e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const productsFiltered: any = products.filter((el: any) =>
-      el.descripcion
-        .trim()
-        .toLowerCase()
-        .includes(e.target.value.trim().toLowerCase())
+  ): void => {
+    const productsFiltered: ProductInterface[] = products.filter(
+      (el: ProductInterface) =>
+        el.descripcion
+          .trim()
+          .toLowerCase()
+          .includes(e.target.value.trim().toLowerCase())
     );
     if (productsFiltered.length) {
       setProductsFilter(productsFiltered);
@@ -58,25 +64,25 @@ export default function Home() {
     }
   };
 
-  const handleProductChange = (value: handleProductChange) => {
+  const handleProductChange = (value: HandleProductChangeType): void => {
     setValueProduct(value);
     if (value.value === 'Todos') {
       setProductsFilter(products);
       setCurrentPage(1);
     } else {
-      const productsFiltered = products?.filter(
-        (el: any) => el.marca === value.value
+      const productsFiltered: ProductInterface[] = products?.filter(
+        (el: ProductInterface) => el.marca === value.value
       );
       setProductsFilter(productsFiltered);
       setCurrentPage(1);
     }
   };
 
-  const handleSelectName = (e: any) => {
+  const handleSelectName = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     setName(e.target.value);
   };
 
-  const handleSelectLine = (e: any) => {
+  const handleSelectLine = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     setLine(e.target.value);
   };
 
@@ -95,7 +101,7 @@ export default function Home() {
 
   useEffect(() => {
     (async () => {
-      const response = await getProducts();
+      const response: ProductInterface[] = await getProducts();
       setProducts(response);
       setProductsFilter(response);
       setCurrentPage(1);

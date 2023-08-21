@@ -1,10 +1,11 @@
 import axios from 'axios';
+import type { ProductFormType } from '../types/types';
+import type { ProductInterface } from '../types/Interfaces';
 
-export const postProduct = async (values: object) => {
+export const postProduct = async (values: ProductFormType): Promise<void> => {
   try {
-    const response = axios.post('/products', values);
-    return response;
-  } catch (error) {
-    console.log(error);
+    axios.post<ProductInterface>('/products', values);
+  } catch (error: any) {
+    return error;
   }
 };

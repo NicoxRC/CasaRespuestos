@@ -1,10 +1,18 @@
 import axios from 'axios';
+import type { ProductEditType } from '../types/types';
+import type { ProductInterface } from '../types/Interfaces';
 
-export async function patchProduct(id: string, values: any) {
+export const patchProduct = async (
+  id: string,
+  values: ProductEditType
+): Promise<ProductInterface> => {
   try {
-    const response = await axios.patch(`/products/${id}`, values);
-    return response.data;
-  } catch (error) {
+    const { data } = await axios.patch<ProductInterface>(
+      `/products/${id}`,
+      values
+    );
+    return data;
+  } catch (error: any) {
     return error;
   }
-}
+};

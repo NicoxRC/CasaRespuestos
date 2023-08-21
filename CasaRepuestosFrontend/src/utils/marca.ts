@@ -1,4 +1,6 @@
-export const marca: any[] = [
+import { MarcaType } from '../types/types';
+
+export const marca: MarcaType[] = [
   { label: 'Todos', value: 'Todos' },
   { label: 'Toto', value: 'Toto' },
   { label: 'Tokico', value: 'Tokico' },

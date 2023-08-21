@@ -1,9 +1,9 @@
 import Card from '../card/Card';
 import type { ProductInterface } from '../../types/Interfaces';
-import type { CardsProps } from '../../types/propsTypes';
+import type { CardsPropsType } from '../../types/types';
 import './Cards.css';
 
-export default function Cards(props: CardsProps): JSX.Element {
+export default function Cards(props: CardsPropsType): JSX.Element {
   const { productsShow } = props;
 
   return (

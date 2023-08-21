@@ -1,12 +1,10 @@
-import { Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
 import Home from './pages/home/Home';
 import NewProduct from './pages/newProduct/NewProduct';
-import EditProduct from './pages/Edit Product/EditProduct';
+import EditProduct from './pages/EditProduct/EditProduct';
+import { Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
-//deploy
 
 function App() {
   return (

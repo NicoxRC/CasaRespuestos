@@ -1,13 +1,17 @@
 import axios from 'axios';
 import md5 from 'md5';
+import type { UserInterface } from '../types/Interfaces';
+import type { UserFormType } from '../types/types';
 
-export const getUser = async (values: any) => {
+export const getUser = async (
+  values: UserFormType
+): Promise<UserInterface[]> => {
   try {
-    const response = await axios.get(
+    const { data } = await axios.get<UserInterface[]>(
       `/user?user=${values.user}&password=${md5(values.password)}`
     );
-    return response.data;
-  } catch (error) {
-    console.log(error);
+    return data;
+  } catch (error: any) {
+    return error;
   }
 };

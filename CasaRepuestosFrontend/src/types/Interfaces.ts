@@ -1,4 +1,4 @@
-import type { handleProductChange } from './functionTypes';
+import type { HandleProductChangeType } from './types';
 
 export interface ProductInterface {
   id: string;
@@ -10,6 +10,12 @@ export interface ProductInterface {
   precio: number;
   referencia: string;
   cantidad: number;
+}
+
+export interface UserInterface {
+  id: string;
+  user: string;
+  password: string;
 }
 
 export interface DefaultValuesFormInterface {
@@ -27,8 +33,8 @@ export interface PaginationInterface {
 }
 
 export interface SearchBarInterface {
-  valueProduct: handleProductChange;
+  valueProduct: HandleProductChangeType;
   handleFilterByMarca: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleFilterByDescripcion: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleProductChange: (value: handleProductChange) => void;
+  handleProductChange: (value: HandleProductChangeType) => void;
 }
