@@ -10,6 +10,10 @@ export const names: string[] = [
   'Sebastian',
   'David',
   'Chucho',
-  'Jhon',
   'Santiago',
+  'Karen',
+  'Niye',
+  'Paty',
+  'Juan Pablo',
+  'Juan David',
 ];
