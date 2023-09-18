@@ -5,7 +5,11 @@ export const getProducts = async (): Promise<ProductInterface[]> => {
   try {
     const { data } = await axios.get<ProductInterface[]>(`/products`);
     return data;
-  } catch (error: any) {
-    return error;
+  } catch (error: unknown) {
+    if (error instanceof TypeError) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Unknown error');
+    }
   }
 };

@@ -11,7 +11,11 @@ export const getUser = async (
       `/user?user=${values.user}&password=${md5(values.password)}`
     );
     return data;
-  } catch (error: any) {
-    return error;
+  } catch (error: unknown) {
+    if (error instanceof TypeError) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Unknown error');
+    }
   }
 };

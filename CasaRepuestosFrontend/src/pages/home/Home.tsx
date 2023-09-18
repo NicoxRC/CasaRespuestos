@@ -66,6 +66,8 @@ export default function Home(): JSX.Element {
 
   const handleProductChange = (value: HandleProductChangeType): void => {
     setValueProduct(value);
+    console.log(value);
+    
     if (value.value === 'Todos') {
       setProductsFilter(products);
       setCurrentPage(1);
