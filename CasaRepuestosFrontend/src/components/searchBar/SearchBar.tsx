@@ -39,9 +39,9 @@ export default function SearchBar(props: SearchBarInterface): JSX.Element {
               onChange={handleFilterByDescripcion}
             />
           </Dropdown.Item>
-          <Dropdown.Item href="#">
+          {/* <Dropdown.Item href="#">
             <MySelect value={valueProduct} onChange={handleProductChange} />
-          </Dropdown.Item>
+          </Dropdown.Item> */}
         </Dropdown.Menu>
       </Dropdown>
     </div>

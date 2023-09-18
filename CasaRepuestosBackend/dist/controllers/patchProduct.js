@@ -15,7 +15,7 @@ module.exports = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const { nombre, linea, categoria, marca, descripcion, precio, referencia, cantidad, } = req.body;
         const findProduct = yield Product_1.Product.findByPk(id);
         if (!findProduct)
-            throw res.status(404).json({ msg: 'Form not found' });
+            throw res.status(404).json({ msg: 'Product not found' });
         const products = yield Product_1.Product.findAll();
         if (products.length > 0) {
             products.map((el) => {

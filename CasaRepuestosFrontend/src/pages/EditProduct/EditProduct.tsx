@@ -15,23 +15,16 @@ export default function EditProduct(): JSX.Element {
   const cookies: Cookies = new Cookies();
   const navigate: NavigateFunction = useNavigate();
 
-  const {
-    id,
-    linea,
-    categoria,
-    descripcion,
-    precio,
-    referencia,
-    cantidad,
-  } = location.state;
+  const { id, linea, categoria, descripcion, precio, referencia, cantidad } =
+    location.state;
 
   const initialValues: ProductEditType = {
     linea: '',
     categoria: '',
     marca: '',
-    descripcion: descripcion,
+    descripcion: '',
     precio: 0,
-    referencia: referencia,
+    referencia: '',
     cantidad: 0,
   };
 

@@ -17,7 +17,7 @@ export = async (req: Request, res: Response): Promise<void> => {
     } = req.body;
 
     const findProduct = await Product.findByPk(id);
-    if (!findProduct) throw res.status(404).json({ msg: 'Form not found' });
+    if (!findProduct) throw res.status(404).json({ msg: 'Product not found' });
 
     const products: ProductInterface[] = await Product.findAll();
 
