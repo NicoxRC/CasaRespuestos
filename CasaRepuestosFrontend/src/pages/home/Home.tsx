@@ -1,6 +1,5 @@
 import Cards from '../../components/cards/Cards';
 import NavBar from '../../components/navBar/NavBar';
-import SearchBar from '../../components/searchBar/SearchBar';
 import Pagination from '../../components/pagination/Pagination';
 import Cookies from 'universal-cookie';
 import DefaultValuesForm from '../../components/defaultValuesForm/DefaultValuesForm';
@@ -8,7 +7,6 @@ import { useState, useEffect } from 'react';
 import { getProducts } from '../../services/getProducts';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { useLocalStorage } from 'react-use-storage';
-import type { HandleProductChangeType } from '../../types/types';
 import type { ProductInterface } from '../../types/Interfaces';
 
 export default function Home(): JSX.Element {
@@ -19,9 +17,6 @@ export default function Home(): JSX.Element {
   const [products, setProducts] = useState<ProductInterface[]>([]);
   const [productsFilter, setProductsFilter] = useState<ProductInterface[]>([]);
   const [productsShow, setProductsShow] = useState<ProductInterface[]>([]);
-  const [valueProduct, setValueProduct] = useState<HandleProductChangeType>({
-    value: '',
-  });
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [name, setName] = useLocalStorage<string>('name');
   const [line, setLine] = useLocalStorage<string>('line');
@@ -60,21 +55,6 @@ export default function Home(): JSX.Element {
       setCurrentPage(1);
     } else {
       setProductsFilter(products);
-      setCurrentPage(1);
-    }
-  };
-
-  const handleProductChange = (value: HandleProductChangeType): void => {
-    setValueProduct(value);
-
-    if (value.value === 'Todos') {
-      setProductsFilter(products);
-      setCurrentPage(1);
-    } else {
-      const productsFiltered: ProductInterface[] = products?.filter(
-        (el: ProductInterface) => el.marca === value.value
-      );
-      setProductsFilter(productsFiltered);
       setCurrentPage(1);
     }
   };
@@ -123,11 +103,16 @@ export default function Home(): JSX.Element {
       >
         <NavBar name={name} line={line} />
         <div className="align-self-center w-50">
-          <SearchBar
-            valueProduct={valueProduct}
-            handleFilterByMarca={handleFilterByMarca}
-            handleFilterByDescripcion={handleFilterByDescripcion}
-            handleProductChange={handleProductChange}
+          <b style={{ color: 'white' }}>Buscar:</b>
+          <input
+            className="form-control m-1 w-100"
+            placeholder="Referencia..."
+            onChange={handleFilterByMarca}
+          />
+          <input
+            className="form-control m-1 w-100"
+            placeholder="Descripcion..."
+            onChange={handleFilterByDescripcion}
           />
         </div>
         <DefaultValuesForm

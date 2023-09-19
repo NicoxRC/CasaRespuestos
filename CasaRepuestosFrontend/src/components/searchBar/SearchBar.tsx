@@ -4,10 +4,8 @@ import type { SearchBarInterface } from '../../types/Interfaces';
 
 export default function SearchBar(props: SearchBarInterface): JSX.Element {
   const {
-    valueProduct,
     handleFilterByMarca,
     handleFilterByDescripcion,
-    handleProductChange,
   } = props;
 
   return (
