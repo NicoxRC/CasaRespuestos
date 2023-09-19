@@ -347,4 +347,7 @@ export const marca: MarcaType[] = [
   { label: 'PREMIUM FILTERS', value: 'PREMIUM FILTERS' },
   { label: 'IBL', value: 'IBL' },
   { label: 'TEK BOND', value: 'TEK BOND' },
+  { label: 'SCHADEK', value: 'SCHADEK' },
+  { label: 'USUZU', value: 'USUZU' },
+  { label: 'HKT', value: 'HKT' },
 ];
