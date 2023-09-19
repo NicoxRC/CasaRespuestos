@@ -51,9 +51,8 @@ export default function Home(): JSX.Element {
     const productsFiltered: ProductInterface[] = products.filter(
       (el: ProductInterface) =>
         el.descripcion
-          .trim()
           .toLowerCase()
-          .includes(e.target.value.trim().toLowerCase())
+          .includes(e.target.value)
     );
     if (productsFiltered.length) {
       setProductsFilter(productsFiltered);
@@ -66,8 +65,7 @@ export default function Home(): JSX.Element {
 
   const handleProductChange = (value: HandleProductChangeType): void => {
     setValueProduct(value);
-    console.log(value);
-    
+
     if (value.value === 'Todos') {
       setProductsFilter(products);
       setCurrentPage(1);
