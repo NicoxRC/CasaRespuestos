@@ -51,8 +51,9 @@ export default function Home(): JSX.Element {
     const productsFiltered: ProductInterface[] = products.filter(
       (el: ProductInterface) =>
         el.descripcion
+          .trim()
           .toLowerCase()
-          .includes(e.target.value)
+          .includes(e.target.value.trim().toLowerCase())
     );
     if (productsFiltered.length) {
       setProductsFilter(productsFiltered);

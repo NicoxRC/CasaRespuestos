@@ -26,7 +26,6 @@ export default function SearchBar(props: SearchBarInterface): JSX.Element {
           <Dropdown.Item href="#">
             <input
               className="form-control me-2 "
-              type="search"
               placeholder="Referencia..."
               onChange={handleFilterByMarca}
             />
@@ -34,7 +33,6 @@ export default function SearchBar(props: SearchBarInterface): JSX.Element {
           <Dropdown.Item href="#">
             <input
               className="form-control me-2 w-100"
-              type="search"
               placeholder="Descripcion..."
               onChange={handleFilterByDescripcion}
             />
