@@ -338,7 +338,6 @@ export const marca: MarcaType[] = [
   { label: 'NB', value: 'NB' },
   { label: 'BEST VALVULAS', value: 'BEST VALVULAS' },
   { label: 'PYSTA', value: 'PYSTA' },
-  { label: 'ABRO', value: 'ABRO' },
   { label: 'Special', value: 'Special' },
   { label: 'Power oil', value: 'Power oil' },
   { label: 'CARBO', value: 'CARBO' },
@@ -355,4 +354,7 @@ export const marca: MarcaType[] = [
   { label: 'Sintesolda', value: 'Sintesolda' },
   { label: 'CELLUX', value: 'CELLUX' },
   { label: 'MACGREY', value: 'MACGREY' },
+  { label: 'BROSOL', value: 'BROSOL' },
+  { label: 'BRASIL', value: 'BRASIL' },
+  { label: 'ARGENTINA', value: 'ARGENTINA' },
 ];
