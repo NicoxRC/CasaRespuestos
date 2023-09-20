@@ -357,4 +357,6 @@ export const marca: MarcaType[] = [
   { label: 'BROSOL', value: 'BROSOL' },
   { label: 'BRASIL', value: 'BRASIL' },
   { label: 'ARGENTINA', value: 'ARGENTINA' },
+  { label: 'NBW', value: 'NBW' },
+  { label: 'KBS', value: 'KBS' },
 ];
