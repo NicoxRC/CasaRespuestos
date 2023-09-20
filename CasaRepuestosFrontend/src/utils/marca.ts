@@ -350,4 +350,9 @@ export const marca: MarcaType[] = [
   { label: 'SCHADEK', value: 'SCHADEK' },
   { label: 'USUZU', value: 'USUZU' },
   { label: 'HKT', value: 'HKT' },
+  { label: 'TAMA', value: 'TAMA' },
+  { label: 'LIDER EPOXI', value: 'LIDER EPOXI' },
+  { label: 'Sintesolda', value: 'Sintesolda' },
+  { label: 'CELLUX', value: 'CELLUX' },
+  { label: 'MACGREY', value: 'MACGREY' },
 ];
