@@ -359,4 +359,8 @@ export const marca: MarcaType[] = [
   { label: 'ARGENTINA', value: 'ARGENTINA' },
   { label: 'NBW', value: 'NBW' },
   { label: 'KBS', value: 'KBS' },
+  { label: 'SORES GENUINE PARTS', value: 'SORES GENUINE PARTS' },
+  { label: 'EXTREME', value: 'EXTREME' },
+  { label: 'EXTREME', value: 'EXTREME' },
+  { label: 'OSSCA', value: 'OSSCA' },
 ];
