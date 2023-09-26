@@ -364,4 +364,5 @@ export const marca: MarcaType[] = [
   { label: 'EXTREME', value: 'EXTREME' },
   { label: 'OSSCA', value: 'OSSCA' },
   { label: 'KAITEN', value: 'KAITEN' },
+  { label: 'Castelautos', value: 'Castelautos' },
 ];
